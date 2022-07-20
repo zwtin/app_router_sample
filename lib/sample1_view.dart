@@ -18,7 +18,9 @@ class Sample1View extends HookWidget {
         child: Center(
           child: TextButton(
             onPressed: () {
-              context.read(appRouterProvider).push(const Sample2View());
+              context
+                  .read(appRouterProvider.notifier)
+                  .push(const Sample2View());
             },
             child: const Text('Sample1View'),
           ),

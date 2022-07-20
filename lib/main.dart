@@ -21,6 +21,7 @@ class MyApp extends HookWidget {
       home: Router(
         routerDelegate: AppRouterDelegate(
           useProvider(appRouterProvider),
+          context.read(appRouterProvider.notifier),
         ),
       ),
     );
