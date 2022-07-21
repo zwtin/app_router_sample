@@ -1,5 +1,4 @@
 import 'package:app_router_sample/app_router.dart';
-import 'package:app_router_sample/app_router_delegate.dart';
 import 'package:app_router_sample/sample1_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -10,6 +9,10 @@ class Tab1View extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    useEffect(() {
+      context.read(appRouterProvider(presentKey)).push(const Sample1View());
+    }, const []);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tab1View'),
@@ -26,6 +29,26 @@ class Tab1View extends HookWidget {
             child: const Text('Tab1View'),
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context, rootNavigator: true).push(
+            MaterialPageRoute<Widget>(
+              builder: (_context) {
+                // return Router(
+                //   routerDelegate: AppRouterDelegate(
+                //     presentKey,
+                //     context.read,
+                //     useProvider(appRouterProvider(presentKey)),
+                //   ),
+                // );
+                return const Sample1View();
+              },
+              fullscreenDialog: true,
+            ),
+          );
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }
