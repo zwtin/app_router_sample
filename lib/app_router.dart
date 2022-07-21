@@ -1,22 +1,30 @@
-import 'package:app_router_sample/sample1_view.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final appRouterProvider =
-    StateNotifierProvider.autoDispose<AppRouter, List<Page>>(
-  (_) {
-    return AppRouter();
+    ChangeNotifierProvider.autoDispose.family<AppRouter, Key>(
+  (ref, key) {
+    return AppRouter(
+      key,
+    );
   },
 );
 
-class AppRouter extends StateNotifier<List<Page>> {
-  AppRouter() : super([const MaterialPage(child: Sample1View())]);
+class AppRouter extends ChangeNotifier {
+  AppRouter(
+    this._key,
+  );
+
+  final Key _key;
+  List<Page> stack = [];
 
   void push(Widget widget) {
-    state = List.of(state)..add(MaterialPage(child: widget));
+    stack = List.of(stack)..add(MaterialPage(child: widget));
+    notifyListeners();
   }
 
   void pop() {
-    state = List.of(state)..removeLast();
+    stack = List.of(stack)..removeLast();
+    notifyListeners();
   }
 }

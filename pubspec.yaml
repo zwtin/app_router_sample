@@ -38,6 +38,12 @@ dependencies:
   hooks_riverpod: ^0.14.0+4
   flutter_hooks: ^0.17.0
 
+  # For Bottom Tab Bar
+  convex_bottom_bar: ^3.0.0
+
+  # For use tuple
+  tuple: ^2.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

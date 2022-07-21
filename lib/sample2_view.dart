@@ -1,4 +1,5 @@
 import 'package:app_router_sample/app_router.dart';
+import 'package:app_router_sample/app_router_delegate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -13,11 +14,11 @@ class Sample2View extends HookWidget {
         title: const Text('Sample2View'),
       ),
       body: Container(
-        color: Colors.green,
+        color: Colors.yellow,
         child: Center(
           child: TextButton(
             onPressed: () {
-              context.read(appRouterProvider.notifier).pop();
+              context.read(appRouterProvider(tab2Key)).pop();
             },
             child: const Text('Sample2View'),
           ),
