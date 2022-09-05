@@ -19,14 +19,14 @@ class MyApp extends HookWidget {
   @override
   Widget build(context) {
     useEffect(() {
-      context.read(appRouterProvider(baseKey)).push(const BottomTabView());
+      context.read(appRouterProvider(appKey)).push(const BottomTabView());
     }, const []);
     return MaterialApp(
       home: Router(
         routerDelegate: AppRouterDelegate(
-          baseKey,
+          appKey,
           context.read,
-          useProvider(appRouterProvider(baseKey)),
+          useProvider(appRouterProvider(appKey)),
         ),
       ),
     );
