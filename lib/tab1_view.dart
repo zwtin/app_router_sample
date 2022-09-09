@@ -12,6 +12,7 @@ class Tab1View extends HookWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tab1View'),
+        elevation: 0.0,
       ),
       body: Container(
         color: Colors.green,
@@ -29,6 +30,7 @@ class Tab1View extends HookWidget {
           context.read(masterAppRouterProvider).present(const Sample1View());
         },
         child: const Icon(Icons.add),
+        elevation: 0.0,
       ),
     );
   }

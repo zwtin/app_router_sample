@@ -11,6 +11,7 @@ class Sample2View extends HookWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sample2View'),
+        elevation: 0.0,
       ),
       body: Container(
         color: Colors.yellow,
